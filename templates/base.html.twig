@@ -4,14 +4,23 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/46.0.0/ckeditor5.css" crossorigin>
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <script src="https://cdn.ckeditor.com/ckeditor5/46.0.0/ckeditor5.umd.js" crossorigin></script>
+            <script src="https://cdn.ckeditor.com/ckeditor5/46.0.0/translations/fr.umd.js" crossorigin></script>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block header %}{% endblock %}
+        {% block body %}
+        {# <div class="editor-container editor-container_classic-editor" id="editor-container">
+            <div class="editor-container__editor"><div id="editor"></div></div>
+        </div> #}
+        {% endblock %}
+        {% block footer %}{% endblock %}
     </body>
 </html>

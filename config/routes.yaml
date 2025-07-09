@@ -3,3 +3,15 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+home:
+   path: /
+   controller: App\Controller\HomeController::index
+
+conditions:
+   path: /cgu
+   controller: App\Controller\HomeController::conditions
+
+confidentialities:
+    path: /confidentialities
+    controller: App\Controller\HomeController::confidentialities
