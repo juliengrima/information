@@ -12,7 +12,7 @@ import './Controllers/main.js';
  */
 import './styles/app.css';
 import './styles/main.css';
-import './styles/fontawesome.css';
+import './styles/fontawesome-min.css';
 import './styles/ckeditor.css';
 
 // console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
