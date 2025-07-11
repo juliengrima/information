@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <!-- Main -->
+    <div id="main">
+        <!-- One -->
+        <section id="one">
+            <header class="major">
+                <h2>Liste des actions</h2>
+            </header>
+        </section>
+        <!-- Two -->
+        <section id="two">
+            <div class="row">
+                <article class="col-6 col-12-xsmall work-item">
+                    <a href="{{ path('app_service_index') }}" class="image fit thumb"><img src="{{ asset('images/Service.png') }}" alt="" /></a>
+                    <h3>Services</h3>
+                    <p>Vous y trouverez la liste des services de la commune</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a href="{{ path('app_localisation_index') }}" class="image fit thumb"><img src="{{ asset('images/Carte.png') }}" alt="" /></a>
+                    <h3>Localisations</h3>
+                    <p>Vous y trouverez la liste des adresses des sites la commune</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a href="{{ path('app_phone_index') }}" class="image fit thumb"><img src="{{ asset('images/Telephone.png') }}" alt="" /></a>
+                    <h3>Téléphones</h3>
+                    <p>Vous y trouverez la liste des numéros de ligne de la commune</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a href="{{ path('app_agents_index') }}" class="image fit thumb"><img src="{{ asset('images/Agents.png') }}" alt="" /></a>
+                    <h3>Agents</h3>
+                    <p>Vous y trouverez la liste des agents de la commune</p>
+                </article>
+            </div>
+        </section>
+    </div>
+{% endblock %}

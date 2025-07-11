@@ -5,7 +5,9 @@
 <header id="header">
     <div class="inner">
         <a href="{{asset('home')}}" class="image avatar"><img src="{{ asset('images/LOGO-MLO.jpg') }}" alt="Logo MLO" /></a>
-        <h1>MLO Informations</h1>
+        <ul class="header-button">
+            <li class="header-button-li"><a href="{{ path('app_information') }}" class="button"><h1>MLO Informations</h1></a></li>
+        </ul>
     </div>
 </header>
 {% endblock %}

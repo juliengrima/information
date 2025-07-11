@@ -1,35 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Service index{% endblock %}
+{% block title %} liste des Service{% endblock %}
 
 {% block body %}
-    <h1>Service index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for service in services %}
-            <tr>
-                <td>{{ service.id }}</td>
-                <td>{{ service.name }}</td>
-                <td>
-                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
-                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_service_new') }}">Create new</a>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2>Liste des services</h2>
+        </header>
+    </section>
+     <!-- Two -->
+     <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_service_new') }}" class="button">Nouveau service</a>
+            </div>
+            <table class="table right">
+                <thead>
+                    <tr>
+                        <th>Nom du service</th>
+                        <th>Localisation</th>
+                        {# <th>Téléphones</th> #}
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for service in services %}
+                    <tr>
+                        <td>{{ service.name }}</td>
+                        <td>{{ service.Localisation }}</td>
+                        {# {% for phone in service.location.phone %}
+                        <td>{{ phone }}</td>
+                        {% endfor %} #}
+                        <td>
+                            <ul class="icons">
+                                <li>
+                                    <a href="{{ path('app_service_show', {'id': service.id}) }}" class="icon solid fa-eye icon-show"><span class="label">Montrer</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_service_edit', {'id': service.id}) }}" class="icon solid fa-pen icon-edit"><span class="label">Editer</span></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table> 
+        </div>
+     </section>
+</div>
 {% endblock %}

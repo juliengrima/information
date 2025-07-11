@@ -1,11 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New Service{% endblock %}
+{% block title %}Nouveau Service{% endblock %}
 
 {% block body %}
-    <h1>Create new Service</h1>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2> Ajouter un nouveau service</h2>
+        </header>
+    </section>
 
-    {{ include('service/_form.html.twig') }}
+    <!-- Two -->
+    <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_service_index') }}" class="button">Retour à la liste</a>
+            </div>
+            {{ include('service/_form.html.twig') }} 
+        </div>
+     </section>
+</div>
 
-    <a href="{{ path('app_service_index') }}">back to list</a>
+   
 {% endblock %}

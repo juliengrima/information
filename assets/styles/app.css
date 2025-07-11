@@ -1,3 +1,42 @@
 body {
     background-color: skyblue;
 }
+
+/* HEADER */
+.header-button{
+    list-style: none;
+}
+
+.header-button-li{
+    padding: 2%;
+}
+
+/* PAGES */
+.button-new{
+    margin: 0% 0% 2% 40%;
+}
+
+.right{
+    margin-left: 2%;
+}
+
+/* LINK ICONS */
+.icon-show, .icon-edit{
+    color: rgba(33, 30, 30, 0.4);
+}
+
+.icon-show:hover{
+    color: #49bf9d !important;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.icon-edit:hover{
+    color: #d58235 !important;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
