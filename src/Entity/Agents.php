@@ -22,8 +22,13 @@ class Agents
     #[ORM\ManyToOne(inversedBy: 'service')]
     private ?Service $service = null;
 
-    #[ORM\OneToOne(inversedBy: 'agents', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'agents')]
     private ?Phone $phone = null;
+
+    function __toString()
+    {
+        return $this->getFirstname() . " | " . $this->getName() . " | ". $this->getService() . " | ". $this->getPhone();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +57,11 @@ class Agents
         $this->firstname = $firstname;
 
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->firstname . ' ' . $this->name;
     }
 
     public function getService(): ?Service

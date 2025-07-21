@@ -1,11 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New Phone{% endblock %}
+{% block title %}Nouveau téléphone{% endblock %}
 
 {% block body %}
-    <h1>Create new Phone</h1>
-
-    {{ include('phone/_form.html.twig') }}
-
-    <a href="{{ path('app_phone_index') }}">back to list</a>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2> Ajouter un nouveau téléphone</h2>
+        </header>
+    </section>
+    <!-- Two -->
+    <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_phone_index') }}" class="button">Retour à la liste</a>
+            </div>
+            {{ include('phone/_form.html.twig') }}
+        </div>
+    </section>
+</div>
 {% endblock %}

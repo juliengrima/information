@@ -18,12 +18,14 @@ class ServiceType extends AbstractType
             ->add('name')
             ->add('localisation', EntityType::class, [
                 'class' => Localisation::class,
-                'choice_label' => 'id',
+                'choice_label' => 'siteName', // ou une méthode __toString()
+                'placeholder' => '— Choisir une localisation —',
+                'required' => false,
             ])
-            ->add('data', EntityType::class, [
-                'class' => Data::class,
-                'choice_label' => 'id',
-            ])
+            // ->add('data', EntityType::class, [
+            //     'class' => Data::class,
+            //     'choice_label' => 'id',
+            // ])
         ;
     }
 

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\PhoneRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: PhoneRepository::class)]
 class Phone
@@ -20,10 +22,24 @@ class Phone
     private ?int $number = null;
 
     #[ORM\ManyToOne(inversedBy: 'phones')]
-    private ?Localisation $localistaion = null;
+    // private ?Localisation $localistaion = null;
+    private ?Localisation $localisation = null;
 
-    #[ORM\OneToOne(mappedBy: 'phone', cascade: ['persist', 'remove'])]
-    private ?Agents $agents = null;
+    /**
+     * @var Collection<int, Agents>
+     */
+    #[ORM\OneToMany(targetEntity: Agents::class, mappedBy: 'phone')]
+    private Collection $agents;
+
+    public function __construct()
+    {
+        $this->agents = new ArrayCollection();
+    }
+
+    function __toString()
+    {
+        return $this->getLocalisation() . " | " . $this->getType() . " | ". $this->getNumber() . " | ". $this->getAgents();
+    }
 
     public function getId(): ?int
     {
@@ -54,36 +70,44 @@ class Phone
         return $this;
     }
 
-    public function getLocalistaion(): ?Localisation
+    public function getLocalisation(): ?Localisation
     {
-        return $this->localistaion;
+        return $this->localisation;
     }
 
-    public function setLocalistaion(?Localisation $localistaion): static
+    public function setLocalisation(?Localisation $localisation): static
     {
-        $this->localistaion = $localistaion;
+        $this->localisation = $localisation;
 
         return $this;
     }
 
-    public function getAgents(): ?Agents
+    /**
+     * @return Collection<int, Agents>
+     */
+    public function getAgents(): Collection
     {
         return $this->agents;
     }
 
-    public function setAgents(?Agents $agents): static
+    public function addAgent(Agents $agent): static
     {
-        // unset the owning side of the relation if necessary
-        if ($agents === null && $this->agents !== null) {
-            $this->agents->setPhone(null);
+        if (!$this->agents->contains($agent)) {
+            $this->agents->add($agent);
+            $agent->setPhone($this);
         }
 
-        // set the owning side of the relation if necessary
-        if ($agents !== null && $agents->getPhone() !== $this) {
-            $agents->setPhone($this);
-        }
+        return $this;
+    }
 
-        $this->agents = $agents;
+    public function removeAgent(Agents $agent): static
+    {
+        if ($this->agents->removeElement($agent)) {
+            // set the owning side to null (unless already changed)
+            if ($agent->getPhone() === $this) {
+                $agent->setPhone(null);
+            }
+        }
 
         return $this;
     }

@@ -1,11 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New Agents{% endblock %}
+{% block title %}Ajout d'un Agents{% endblock %}
 
 {% block body %}
-    <h1>Create new Agents</h1>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2> Ajouter un nouvel agent</h2>
+        </header>
+    </section>
 
-    {{ include('agents/_form.html.twig') }}
-
-    <a href="{{ path('app_agents_index') }}">back to list</a>
+    <!-- Two -->
+    <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_agents_index') }}" class="button">Retour à la liste</a>
+            </div>
+             {{ include('agents/_form.html.twig') }}
+        </div>
+     </section>
+</div>
 {% endblock %}

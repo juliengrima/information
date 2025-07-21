@@ -30,6 +30,12 @@ class Service
     #[ORM\OneToOne(mappedBy: 'service', cascade: ['persist', 'remove'])]
     private ?Data $data = null;
 
+    function __toString()
+    {
+        return $this->getLocalisation() . " | " . $this->getName() . " | ". $this->getData();
+    }
+
+
     public function __construct()
     {
         $this->service = new ArrayCollection();

@@ -1,4 +1,62 @@
-{{ form_start(form) }}
+{# {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form) }} #}
+
+<section id="three">
+    <h2>Ajouter un numéro de téléphone</h2>
+    <p>Complétez les informations de téléphone associées à un agent et une localisation.</p>
+
+    <div class="row">
+        <div class="col-8 col-12-small">
+            {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+            <div class="row gtr-uniform gtr-50">
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.type, 'Type de téléphone') }}
+                    {{ form_widget(form.type, {'attr': {'placeholder': 'Fixe, Mobile, etc.', 'id': 'type'}}) }}
+                    {{ form_errors(form.type) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.number, 'Numéro') }}
+                    {{ form_widget(form.number, {'attr': {'placeholder': 'Numéro de téléphone', 'id': 'number'}}) }}
+                    {{ form_errors(form.number) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.localisation, 'Localisation') }}
+                    {{ form_widget(form.localisation, {
+                        'attr': {'id': 'localistaion'}
+                    }) }}
+                    {{ form_errors(form.localisation) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.agents, 'Agent associé') }}
+                    {{ form_widget(form.agents, {
+                        'attr': {'id': 'agents'}
+                    }) }}
+                    {{ form_errors(form.agents) }}
+                </div>
+            </div>
+
+            <ul class="actions">
+                <li>
+                    <input type="submit" value="{{ button_label|default('Enregistrer') }}" class="primary" />
+                </li>
+            </ul>
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-4 col-12-small">
+            <ul class="labeled-icons">
+                <li>
+                    <h3 class="icon solid fa-phone"><span class="label">Info</span></h3>
+                    Ce formulaire permet d’ajouter un numéro de téléphone lié à un agent et à une localisation.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

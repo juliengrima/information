@@ -1,37 +1,70 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Phone index{% endblock %}
+{% block title %}Téléphones{% endblock %}
 
 {% block body %}
-    <h1>Phone index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>Number</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for phone in phones %}
-            <tr>
-                <td>{{ phone.id }}</td>
-                <td>{{ phone.type }}</td>
-                <td>{{ phone.number }}</td>
-                <td>
-                    <a href="{{ path('app_phone_show', {'id': phone.id}) }}">show</a>
-                    <a href="{{ path('app_phone_edit', {'id': phone.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_phone_new') }}">Create new</a>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2>Numéro de téléphone des agents et leur localité</h2>
+        </header>
+    </section>
+    <!-- Two -->
+     <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_phone_new') }}" class="button">Nouveau téléphone</a>
+            </div>
+            <table id="example" class="table table-striped display">
+                <thead>
+                    <tr>
+                        <th>Type de téléphone</th>
+                        <th>Numéro</th>
+                        <th>Agent</th>
+                        <th>Localisation</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for phone in phones %}
+                    <tr>
+                        <td>{{ phone.type }}</td>
+                        <td>{{ phone.number }}</td>
+                        <td>
+                            {% if phone.agents %}
+                            {% for agent in phone.agents %}
+                                <div class="col 12 aln-center">
+                                    {{ agent.name }} {{ agent.firstname }} 
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            {{ '-' }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {# {% if phone.localisation %}
+                                {{ phone.localisation.siteName }}
+                            {% else %}
+                            {% endif %} #}
+                            {{ phone.localisation ? phone.localisation.siteName : '—' }}
+                        </td>
+                        <td>
+                            <ul class="icons">
+                                <li>
+                                    <a href="{{ path('app_phone_edit', {'id': phone.id}) }}" class="icon solid fa-pen icon-edit"><span class="label">Editer</span></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table> 
+        </div>
+     </section>
+</div>
 {% endblock %}

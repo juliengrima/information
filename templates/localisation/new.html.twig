@@ -1,11 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New Localisation{% endblock %}
+{% block title %}Nouvelle Localisation{% endblock %}
 
 {% block body %}
-    <h1>Create new Localisation</h1>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2> Ajouter une nouvelle adresse</h2>
+        </header>
+    </section>
 
-    {{ include('localisation/_form.html.twig') }}
-
-    <a href="{{ path('app_localisation_index') }}">back to list</a>
+    <!-- Two -->
+    <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_localisation_index') }}" class="button">Retour à la liste</a>
+            </div>
+            {{ include('localisation/_form.html.twig') }}
+        </div>
+     </section>
+</div>
 {% endblock %}

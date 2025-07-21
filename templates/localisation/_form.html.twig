@@ -1,4 +1,58 @@
-{{ form_start(form) }}
+<section id="three">
+    <h2>Ajouter une localisation</h2>
+    <p>Renseignez les informations de localisation du site (nom, ville, adresse).</p>
+
+    <div class="row">
+        <div class="col-8 col-12-small">
+            {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+            <div class="row gtr-uniform gtr-50">
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.site_name, 'Nom du site') }}
+                    {{ form_widget(form.site_name, {'attr': {'placeholder': 'Ex : DataCenter Alpha', 'id': 'site_name'}}) }}
+                    {{ form_errors(form.site_name) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.city, 'Ville') }}
+                    {{ form_widget(form.city, {'attr': {'placeholder': 'Ville', 'id': 'city'}}) }}
+                    {{ form_errors(form.city) }}
+                </div>
+
+                <div class="col-12">
+                    {{ form_label(form.address, 'Adresse') }}
+                    {{ form_widget(form.address, {'attr': {'placeholder': 'Adresse complète', 'id': 'address'}}) }}
+                    {{ form_errors(form.address) }}
+                </div>
+                {# <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.service) }}
+                    {{ form_widget(form.service, {'attr': {'id': 'services'}}) }}
+                    {{ form_errors(form.service) }}
+                </div> #}
+            </div>
+
+            <ul class="actions">
+                <li>
+                    <input type="submit" value="{{ button_label|default('Enregistrer') }}" class="primary" />
+                </li>
+            </ul>
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-4 col-12-small">
+            <ul class="labeled-icons">
+                <li>
+                    <h3 class="icon solid fa-map-marker-alt"><span class="label">Information</span></h3>
+                    Ce formulaire permet d’enregistrer un site physique avec son nom, sa ville et son adresse.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{# {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form) }} #}

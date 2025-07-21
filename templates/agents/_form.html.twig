@@ -1,4 +1,55 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<section id="three">
+    <h2>Ajouter un agent</h2>
+    <p>Complétez les informations ci-dessous pour enregistrer un agent, son poste, son service et sa localisation.</p>
+
+    <div class="row">
+        <div class="col-8 col-12-small">
+            {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+            <div class="row gtr-uniform gtr-50">
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.name, 'Nom de l\'agent') }}
+                    {{ form_widget(form.name, {'attr': {'placeholder': 'Nom', 'id': 'name'}}) }}
+                    {{ form_errors(form.name) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.firstname, 'Prénom de l\'agent') }}
+                    {{ form_widget(form.firstname, {'attr': {'placeholder': 'Prénom', 'id': 'firstname'}}) }}
+                    {{ form_errors(form.firstname) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.service, 'Service') }}
+                    {{ form_widget(form.service, {'attr': {'id': 'service'}}) }}
+                    {{ form_errors(form.service) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.phone, 'Numéro de téléphone / poste') }}
+                    {{ form_widget(form.phone, {'attr': {'id': 'phone'}}) }}
+                    {{ form_errors(form.phone) }}
+                </div>
+
+            </div>
+
+            <ul class="actions">
+                <li>
+                    <input type="submit" value="{{ button_label|default('Enregistrer') }}" class="primary" />
+                </li>
+            </ul>
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-4 col-12-small">
+            <ul class="labeled-icons">
+                <li>
+                    <h3 class="icon solid fa-user"><span class="label">Infos</span></h3>
+                    Ce formulaire permet d’ajouter un agent avec son nom, son prénom, le service auquel il est rattaché et le numéro de téléphone associé.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,11 +1,71 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Localisation index{% endblock %}
+{% block title %}Localisation des services{% endblock %}
 
 {% block body %}
-    <h1>Localisation index</h1>
+<div id="main">
+    <!-- One -->
+    <section id="one">
+        <header class="major">
+            <h2>Localisation des services</h2>
+        </header>
+    </section>
+    <!-- Two -->
+     <section id="two">
+        <div class="row">
+            <div class="button-new">
+                <a href="{{ path('app_localisation_new') }}" class="button">Nouvelles localisation</a>
+            </div>
+            <table id="example" class="table table-striped display">
+                <thead>
+                    <tr>
+                        <th>Nom du site</th>
+                        <th>Ville</th>
+                        <th>Adresse</th>
+                        <th>Services associés</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for localisation in localisations %}
+                    <tr>
+                        <td>{{ localisation.siteName }}</td>
+                        <td>{{ localisation.city}}</td>
+                        <td>{{ localisation.address }}</td>
+                        <td>
+                            {% if localisation.service %}
+                            {% for service in localisation.service %}
+                                <div class="col 12 aln-center">
+                                    {{ service.name }}
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            {{ '-' }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <ul class="icons">
+                                {# <li>
+                                    <a href="{{ path('app_localisation_show', {'id': localisation.id}) }}" class="icon solid fa-eye icon-show"><span class="label">Montrer</span></a>
+                                </li> #}
+                                <li>
+                                    <a href="{{ path('app_localisation_edit', {'id': localisation.id}) }}" class="icon solid fa-pen icon-edit"><span class="label">Editer</span></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table> 
+        </div>
+     </section>
+</div>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -33,7 +93,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
 
-    <a href="{{ path('app_localisation_new') }}">Create new</a>
+    {# <a href="{{ path('app_localisation_new') }}">Create new</a> #}
 {% endblock %}

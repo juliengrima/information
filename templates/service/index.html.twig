@@ -16,7 +16,7 @@
             <div class="button-new">
                 <a href="{{ path('app_service_new') }}" class="button">Nouveau service</a>
             </div>
-            <table class="table right">
+            <table id="example" class="table table-striped display">
                 <thead>
                     <tr>
                         <th>Nom du service</th>
@@ -29,7 +29,12 @@
                 {% for service in services %}
                     <tr>
                         <td>{{ service.name }}</td>
-                        <td>{{ service.Localisation }}</td>
+                        <td>
+                            {% if service.Localisation is empty %}
+                            {% else %}
+                            {{ service.localisation.sitename }}
+                            {% endif %}
+                        </td>
                         {# {% for phone in service.location.phone %}
                         <td>{{ phone }}</td>
                         {% endfor %} #}
