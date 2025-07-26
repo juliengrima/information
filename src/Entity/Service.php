@@ -25,7 +25,8 @@ class Service
      * @var Collection<int, Agents>
      */
     #[ORM\OneToMany(targetEntity: Agents::class, mappedBy: 'service')]
-    private Collection $service;
+    private Collection $agents;
+    // private Collection $service;
 
     #[ORM\OneToOne(mappedBy: 'service', cascade: ['persist', 'remove'])]
     private ?Data $data = null;
@@ -38,7 +39,7 @@ class Service
 
     public function __construct()
     {
-        $this->service = new ArrayCollection();
+        $this->agents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,27 +74,27 @@ class Service
     /**
      * @return Collection<int, Agents>
      */
-    public function getService(): Collection
+    public function getAgents(): Collection
     {
-        return $this->service;
+        return $this->agents;
     }
 
-    public function addService(Agents $service): static
+    public function addAgents(Agents $agents): static
     {
-        if (!$this->service->contains($service)) {
-            $this->service->add($service);
-            $service->setService($this);
+        if (!$this->agents->contains($agents)) {
+            $this->agents->add($agents);
+            $agents->setService($this);
         }
 
         return $this;
     }
 
-    public function removeService(Agents $service): static
+    public function removeAgents(Agents $agents): static
     {
-        if ($this->service->removeElement($service)) {
+        if ($this->agents->removeElement($agents)) {
             // set the owning side to null (unless already changed)
-            if ($service->getService() === $this) {
-                $service->setService(null);
+            if ($agents->getService() === $this) {
+                $agents->setService(null);
             }
         }
 

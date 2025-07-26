@@ -6,6 +6,7 @@ use App\Repository\PhoneRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PhoneRepository::class)]
 class Phone
@@ -18,8 +19,12 @@ class Phone
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $number = null;
+   #[ORM\Column(length: 20, nullable: true)]
+   #[Assert\Regex(
+        pattern: "/^\+?[0-9\s\-]{6,20}$/",
+        message: "Numéro invalide."
+    )]
+    private ?string $number = null;
 
     #[ORM\ManyToOne(inversedBy: 'phones')]
     // private ?Localisation $localistaion = null;
@@ -38,7 +43,7 @@ class Phone
 
     function __toString()
     {
-        return $this->getLocalisation() . " | " . $this->getType() . " | ". $this->getNumber() . " | ". $this->getAgents();
+        return $this->getType() . " | ". $this->getNumber();
     }
 
     public function getId(): ?int
@@ -58,12 +63,12 @@ class Phone
         return $this;
     }
 
-    public function getNumber(): ?int
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
-    public function setNumber(?int $number): static
+    public function setNumber(?string $number): static
     {
         $this->number = $number;
 

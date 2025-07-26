@@ -21,3 +21,20 @@
     </section>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const phoneInput = document.getElementById('number');
+            if (phoneInput) {
+                Inputmask({
+                    mask: "99 99 99 99 99",
+                    placeholder: " ",
+                    showMaskOnHover: false
+                }).mask(phoneInput);
+            }
+        });
+    </script>
+{% endblock %}

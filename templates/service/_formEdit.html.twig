@@ -1,0 +1,48 @@
+<section id="three">
+    <h2>Ajouter un service</h2>
+    <p>Complétez les informations ci-dessous pour enregistrer un nouveau service.</p>
+
+    <div class="row">
+        <div class="col-8 col-12-small">
+            {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+            <div class="row gtr-uniform gtr-50">
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.name, 'Nom du service') }}
+                    {{ form_widget(form.name, {'attr': {'placeholder': 'Nom', 'id': 'name'}}) }}
+                    {{ form_errors(form.name) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.localisation, 'Localisation') }}
+                    {{ form_widget(form.localisation, {'attr': {'id': 'localisation'}}) }}
+                    {{ form_errors(form.localisation) }}
+                </div>
+                <div class="col-12">
+                    {{ form_label(form.data.service_data, 'Informations complémentaires') }}
+                    {{ form_widget(form.data.service_data, { attr: { id: 'ckeditor-service-data' } }) }}
+                    {{ form_rest(form.data.service_data) }}
+                    {{ form_errors(form.data.service_data) }}
+                </div>
+               
+            <ul class="actions">
+                <li>
+                    <input type="submit" value="{{ button_label|default('Enregistrer') }}" class="primary" />
+                </li>
+            </ul>
+
+            {# {{ form_end(form, {'render_rest': false}) }} #}
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-4 col-12-small">
+            <ul class="labeled-icons">
+                <li>
+                    <h3 class="icon solid fa-info-circle"><span class="label">Information</span></h3>
+                    Ce formulaire permet d’ajouter ou modifier un service lié à une localisation et à une donnée.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

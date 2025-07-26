@@ -1,8 +1,3 @@
-{# {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }} #}
-
 <section id="three">
     <h2>Ajouter un numéro de téléphone</h2>
     <p>Complétez les informations de téléphone associées à un agent et une localisation.</p>
@@ -24,20 +19,12 @@
                     {{ form_errors(form.number) }}
                 </div>
 
-                <div class="col-6 col-12-xsmall">
+                <div class="col-12">
                     {{ form_label(form.localisation, 'Localisation') }}
                     {{ form_widget(form.localisation, {
                         'attr': {'id': 'localistaion'}
                     }) }}
                     {{ form_errors(form.localisation) }}
-                </div>
-
-                <div class="col-6 col-12-xsmall">
-                    {{ form_label(form.agents, 'Agent associé') }}
-                    {{ form_widget(form.agents, {
-                        'attr': {'id': 'agents'}
-                    }) }}
-                    {{ form_errors(form.agents) }}
                 </div>
             </div>
 

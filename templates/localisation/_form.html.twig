@@ -25,11 +25,6 @@
                     {{ form_widget(form.address, {'attr': {'placeholder': 'Adresse complète', 'id': 'address'}}) }}
                     {{ form_errors(form.address) }}
                 </div>
-                {# <div class="col-6 col-12-xsmall">
-                    {{ form_label(form.service) }}
-                    {{ form_widget(form.service, {'attr': {'id': 'services'}}) }}
-                    {{ form_errors(form.service) }}
-                </div> #}
             </div>
 
             <ul class="actions">
@@ -51,8 +46,3 @@
         </div>
     </div>
 </section>
-
-{# {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }} #}

@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Data;
 use App\Entity\Localisation;
 use App\Entity\Service;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -22,10 +21,6 @@ class ServiceType extends AbstractType
                 'placeholder' => '— Choisir une localisation —',
                 'required' => false,
             ])
-            // ->add('data', EntityType::class, [
-            //     'class' => Data::class,
-            //     'choice_label' => 'id',
-            // ])
         ;
     }
 

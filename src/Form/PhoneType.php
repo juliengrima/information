@@ -16,29 +16,13 @@ class PhoneType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('number')
-            // ->add('localistaion', EntityType::class, [
-            //     'class' => Localisation::class,
-            //     'choice_label' => 'id',
-            // ])
+            ->add('number', null, [
+                'attr' => ['placeholder' => 'Ex: 0612345678'],
+            ])
             ->add('localisation', EntityType::class, [
                 'class' => Localisation::class,
                 'choice_label' => 'siteName',
                 'placeholder' => '— Choisir une localisation —',
-                'required' => false,
-            ])
-            // ->add('agents', EntityType::class, [
-            //     'class' => Agents::class,
-            //     'choice_label' => 'fullName', // ou un autre champ pertinent
-            //     'placeholder' => '— Sélectionner un agent —',
-            //     'required' => false,
-            // ])
-            ->add('agents', EntityType::class, [
-                'class' => Agents::class,
-                'choice_label' => function (Agents $agent) {
-                    return $agent->getFirstname() . ' ' . $agent->getName();
-                },
-                'placeholder' => '— Sélectionner un agent —',
                 'required' => false,
             ])
         ;

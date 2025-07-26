@@ -33,7 +33,7 @@ class Localisation
     /**
      * @var Collection<int, Phone>
      */
-    #[ORM\OneToMany(targetEntity: Phone::class, mappedBy: 'localistaion')]
+    #[ORM\OneToMany(targetEntity: Phone::class, mappedBy: 'localisation')]
     private Collection $phones;
 
     public function __construct()
@@ -125,7 +125,7 @@ class Localisation
     {
         if (!$this->phones->contains($phone)) {
             $this->phones->add($phone);
-            $phone->setLocalistaion($this);
+            $phone->setLocalisation($this);
         }
 
         return $this;
@@ -135,8 +135,8 @@ class Localisation
     {
         if ($this->phones->removeElement($phone)) {
             // set the owning side to null (unless already changed)
-            if ($phone->getLocalistaion() === $this) {
-                $phone->setLocalistaion(null);
+            if ($phone->getLocalisation() === $this) {
+                $phone->setLocalisation(null);
             }
         }
 
