@@ -1,0 +1,64 @@
+<section id="three">
+    <h2>{{ button_label is defined and button_label == 'Mettre à jour' ? 'Modifier un utilisateur' : 'Ajouter un utilisateur' }}</h2>
+    <p>Complétez les informations utilisateur ci-dessous.</p>
+
+    <div class="row">
+        <div class="col-8 col-12-small">
+            {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+            <div class="row gtr-uniform gtr-50">
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.username, 'Nom d’utilisateur (Email)') }}
+                    {{ form_widget(form.username, {
+                        'attr': {
+                            'placeholder': 'Nom d’utilisateur',
+                            'id': 'username'
+                        }
+                    }) }}
+                    {{ form_errors(form.username) }}
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    {{ form_label(form.roles, 'Rôles') }}
+                    {{ form_widget(form.roles, {
+                        'attr': {
+                            'id': 'roles'
+                        }
+                    }) }}
+                    {{ form_errors(form.roles) }}
+                </div>
+
+                {# Facultatif : mot de passe (souvent dans la création uniquement) #}
+                {% if form.plainPassword is defined %}
+                    <div class="col-12">
+                        {{ form_label(form.plainPassword, 'Mot de passe') }}
+                        {{ form_widget(form.plainPassword, {
+                            'attr': {
+                                'placeholder': 'Nouveau mot de passe',
+                                'id': 'plainPassword'
+                            }
+                        }) }}
+                        {{ form_errors(form.plainPassword) }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <ul class="actions">
+                <li>
+                    <input type="submit" value="{{ button_label|default('Enregistrer') }}" class="primary" />
+                </li>
+            </ul>
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-4 col-12-small">
+            <ul class="labeled-icons">
+                <li>
+                    <h3 class="icon solid fa-user-shield"><span class="label">Info</span></h3>
+                    Ce formulaire permet d’ajouter ou modifier un compte utilisateur, avec ses rôles.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

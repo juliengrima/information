@@ -42,14 +42,6 @@ final class LocalisationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_localisation_show', methods: ['GET'])]
-    public function show(Localisation $localisation): Response
-    {
-        return $this->render('localisation/show.html.twig', [
-            'localisation' => $localisation,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_localisation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Localisation $localisation, EntityManagerInterface $entityManager): Response
     {

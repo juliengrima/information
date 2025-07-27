@@ -126,3 +126,30 @@ input[type="button"]:active,
     margin: 0%;
     padding: 0%;
 }
+
+/* INPUTS */
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+/* MODALS */
+.modal {
+    position: fixed;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+.modal.hidden {
+    display: none;
+}
+body.is-blurred {
+    filter: blur(2px);
+}

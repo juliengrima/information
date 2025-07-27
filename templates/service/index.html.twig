@@ -13,9 +13,11 @@
      <!-- Two -->
      <section id="two">
         <div class="row">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
             <div class="button-new">
                 <a href="{{ path('app_service_new') }}" class="button">Nouveau service</a>
             </div>
+            {% endif %}
             <table id="example" class="table table-striped display">
                 <thead>
                     <tr>
@@ -40,9 +42,11 @@
                                 <li>
                                     <a href="{{ path('app_service_show', {'id': service.id}) }}" class="icon solid fa-eye icon-show"><span class="label">Montrer</span></a>
                                 </li>
+                                {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
                                 <li>
                                     <a href="{{ path('app_service_edit', {'id': service.id}) }}" class="icon solid fa-pen icon-edit"><span class="label">Editer</span></a>
                                 </li>
+                                {% endif %}
                             </ul>
                         </td>
                     </tr>

@@ -42,14 +42,6 @@ final class PhoneController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_phone_show', methods: ['GET'])]
-    public function show(Phone $phone): Response
-    {
-        return $this->render('phone/show.html.twig', [
-            'phone' => $phone,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_phone_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Phone $phone, EntityManagerInterface $entityManager): Response
     {

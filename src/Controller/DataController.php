@@ -42,14 +42,6 @@ final class DataController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_data_show', methods: ['GET'])]
-    public function show(Data $data): Response
-    {
-        return $this->render('data/show.html.twig', [
-            'data' => $data,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_data_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Data $data, EntityManagerInterface $entityManager): Response
     {

@@ -42,14 +42,6 @@ final class AgentsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_agents_show', methods: ['GET'])]
-    public function show(Agents $agent): Response
-    {
-        return $this->render('agents/show.html.twig', [
-            'agent' => $agent,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_agents_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Agents $agent, EntityManagerInterface $entityManager): Response
     {

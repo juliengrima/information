@@ -28,5 +28,16 @@
             $('#example').DataTable();
         });
     </script>
+    <script>
+        function openLoginModal() {
+            document.getElementById('modal-login').classList.remove('hidden');
+            document.body.classList.add('is-blurred');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('modal-login').classList.add('hidden');
+            document.body.classList.remove('is-blurred');
+        }
+    </script>
 {% endblock %}
 </html>

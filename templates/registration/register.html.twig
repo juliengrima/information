@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<section id="main" class="container medium">
+    <header>
+        <h2>Créer un compte</h2>
+        <p>Veuillez remplir le formulaire pour vous inscrire.</p>
+        <ul class="actions">
+            <li><a href="{{ path('app_user_index') }}" class="button small">← Retour à la liste</a></li>
+        </ul>
+    </header>
+
+    <div class="box">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">
+                {{ flash_error }}
+            </div>
+        {% endfor %}
+
+        {{ form_start(registrationForm) }}
+
+        <div class="row gtr-uniform gtr-50">
+
+            <div class="col-12">
+                {{ form_row(registrationForm.username) }}
+            </div>
+
+            <div class="col-12">
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe'
+                }) }}
+            </div>
+
+            <div class="col-12">
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="S'inscrire" class="primary" /></li>
+                </ul>
+            </div>
+
+        </div>
+
+        {{ form_end(registrationForm) }}
+    </div>
+</section>
+{% endblock %}

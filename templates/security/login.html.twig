@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<section id="main" class="container medium">
+    <header>
+        <h2>Connexion</h2>
+        <p>Veuillez vous identifier pour accéder à l'espace sécurisé.</p>
+    </header>
+
+    <div class="box">
+        <form method="post">
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            {% if app.user %}
+                <p>
+                    Connecté en tant que {{ app.user.userIdentifier }},
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                </p>
+            {% endif %}
+
+            <div class="row gtr-uniform gtr-50">
+
+                <div class="col-12">
+                    <label for="username">Identifiant</label>
+                    <input type="text" value="{{ last_username }}" name="_username" id="username" placeholder="Nom d'utilisateur" required autofocus />
+                </div>
+
+                <div class="col-12">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="_password" id="password" placeholder="Mot de passe" required />
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="col-12">
+                    <ul class="actions">
+                        <li><input type="submit" value="Se connecter" class="primary" /></li>
+                    </ul>
+                </div>
+            </div>
+             {% set referer = app.request.headers.get('referer') %}
+            <input type="hidden" name="_target_path" value="{% if referer and '/login' not in referer %}{{ referer }}{% else %}{{ path('app_home') }}{% endif %}">
+        </form>
+    </div>
+</section>
+{% endblock %}

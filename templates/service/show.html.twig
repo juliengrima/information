@@ -12,7 +12,9 @@
          <!-- Actions -->
         <ul class="actions">
             <li><a href="{{ path('app_service_index') }}" class="button small">← Retour à la liste</a></li>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
             <li><a href="{{ path('app_service_edit', {'id': service.id}) }}" class="button small">Modifier</a></li>
+            {% endif %}
         </ul>
     </section>
 

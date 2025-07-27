@@ -13,9 +13,11 @@
     <!-- Two -->
      <section id="two">
         <div class="row">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
             <div class="button-new">
                 <a href="{{ path('app_phone_new') }}" class="button">Nouveau téléphone</a>
             </div>
+            {% endif %}
             <table id="example" class="table table-striped display">
                 <thead>
                     <tr>
@@ -23,7 +25,9 @@
                         <th>Numéro</th>
                         <th>Agent</th>
                         <th>Localisation</th>
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
                         <th>actions</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +53,7 @@
                             {% endif %} #}
                             {{ phone.localisation ? phone.localisation.siteName : '—' }}
                         </td>
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
                         <td>
                             <ul class="icons">
                                 <li>
@@ -56,6 +61,7 @@
                                 </li>
                             </ul>
                         </td>
+                        {% endif %}
                     </tr>
                 {% else %}
                     <tr>

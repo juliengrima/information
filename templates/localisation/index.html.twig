@@ -13,9 +13,11 @@
     <!-- Two -->
      <section id="two">
         <div class="row">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
             <div class="button-new">
                 <a href="{{ path('app_localisation_new') }}" class="button">Nouvelles localisation</a>
             </div>
+            {% endif %}
             <table id="example" class="table table-striped display">
                 <thead>
                     <tr>
@@ -23,7 +25,9 @@
                         <th>Ville</th>
                         <th>Adresse</th>
                         <th>Services associés</th>
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
                         <th>actions</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -43,16 +47,15 @@
                             {{ '-' }}
                             {% endif %}
                         </td>
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
                         <td>
                             <ul class="icons">
-                                {# <li>
-                                    <a href="{{ path('app_localisation_show', {'id': localisation.id}) }}" class="icon solid fa-eye icon-show"><span class="label">Montrer</span></a>
-                                </li> #}
                                 <li>
                                     <a href="{{ path('app_localisation_edit', {'id': localisation.id}) }}" class="icon solid fa-pen icon-edit"><span class="label">Editer</span></a>
                                 </li>
                             </ul>
                         </td>
+                        {% endif %}
                     </tr>
                 {% else %}
                     <tr>
