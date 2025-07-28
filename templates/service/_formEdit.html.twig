@@ -19,12 +19,19 @@
                     {{ form_widget(form.localisation, {'attr': {'id': 'localisation'}}) }}
                     {{ form_errors(form.localisation) }}
                 </div>
-                <div class="col-12">
-                    {{ form_label(form.data.service_data, 'Informations complémentaires') }}
-                    {{ form_widget(form.data.service_data, { attr: { id: 'ckeditor-service-data' } }) }}
-                    {{ form_rest(form.data.service_data) }}
-                    {{ form_errors(form.data.service_data) }}
-                </div>
+               {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <div class="col-12">
+                        {{ form_label(form.data.service_data, 'Informations complémentaires') }}
+                        {{ form_widget(form.data.service_data, { attr: { id: 'ckeditor-service-data' } }) }}
+                        {{ form_errors(form.data.service_data) }}
+                    </div>
+                {% else %}
+                <div class="col-12" style="display: none;">
+                        {{ form_label(form.data.service_data, 'Informations complémentaires') }}
+                        {{ form_widget(form.data.service_data, { attr: { style: 'display:none' } }) }}
+                        {{ form_errors(form.data.service_data) }}
+                    </div>
+                {% endif %}
                
             <ul class="actions">
                 <li>

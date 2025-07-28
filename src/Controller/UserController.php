@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/user')]
+#[Route('/admin/user')]
 final class UserController extends AbstractController
 {
     #[Route(name: 'app_user_index', methods: ['GET'])]
@@ -23,7 +23,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
+    #[Route('/admin/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -43,7 +43,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-   #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+   #[Route('/admin/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
 public function edit(Request $request, User $user, EntityManagerInterface $em, UserPasswordHasherInterface $hasher): Response
 {
     $form = $this->createForm(UserType::class, $user);
@@ -68,7 +68,7 @@ public function edit(Request $request, User $user, EntityManagerInterface $em, U
     ]);
 }
 
-    #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
+    #[Route('/admin/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {

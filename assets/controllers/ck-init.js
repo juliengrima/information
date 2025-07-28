@@ -107,17 +107,3 @@ ClassicEditor.create(editorField, editorConfig)
 	.catch(err => {
 		console.error(err.stack);
 	});
-
-// const editorFieldVisible = document.querySelector('#ckeditor-visible');
-// const editorFieldHidden = document.querySelector('[name="service[data][service_data]"]');
-
-// ClassicEditor.create(editorFieldVisible, editorConfig)
-// 	.then(editor => {
-// 		editor.model.document.on('change:data', () => {
-// 			const editorData = editor.getData();
-// 			editorFieldHidden.value = editorData;
-// 		});
-// 	})
-// 	.catch(err => {
-// 		console.error('CKEditor erreur :', err);
-// 	});

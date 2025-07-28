@@ -34,16 +34,17 @@
             </section>
 
             <!-- Cadre données du service -->
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
             <section class="box">
                 <h3>Données du service</h3>
-
-                {% if service.data %}
-                    <p><strong>Informations :</strong></p>
-                    <div id="service-data-content">{{ service.data.serviceData|raw }}</div>
-                {% else %}
-                    <p>Aucune donnée associée pour le moment.</p>
-                {% endif %}
+                    {% if service.data %}
+                        <p><strong>Informations :</strong></p>
+                        <div id="service-data-content">{{ service.data.serviceData|raw }}</div>
+                    {% else %}
+                        <p>Aucune donnée associée pour le moment.</p>
+                    {% endif %}
             </section>
+            {% endif %}
         </div>
 
         <!-- Colonne droite -->

@@ -37,22 +37,22 @@ security:
     access_control:
         #ADMINISTRATION
         - { path: ^/admin/users, roles: ROLE_SUPER_ADMIN }
-        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
         # USER
         #  - { path: ^/ roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # SERVICE
         - { path: ^/service/new, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         - { path: ^/service/\d+/edit, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        - { path: ^/service/service/\d+/update-data, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/service/service/\d+/update-data, roles: ROLE_SUPER_ADMIN }
         # LOCALISATION
-        - { path: ^/localisation/new, roles: ROLE_SUPER_ADMIN }
-        - { path: ^/localisation/\d+/edit, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/localisation/new, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+        - { path: ^/localisation/\d+/edit, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # PHONE
-        - { path: ^/phone/new, roles: ROLE_SUPER_ADMIN }
-        - { path: ^/phone/\d+/edit, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/phone/new, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/phone/\d+/edit, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN]}
         # AGENTS
-        - { path: ^/agents/new, roles: ROLE_SUPER_ADMIN }
-        - { path: ^/agents/\d+/edit, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/agents/new, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+        - { path: ^/agents/\d+/edit, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN]}
 
 
     role_hierarchy:

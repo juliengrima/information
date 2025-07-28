@@ -13,7 +13,7 @@
     <!-- Two -->
      <section id="two">
         <div class="row">
-            {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
             <div class="button-new">
                 <a href="{{ path('app_localisation_new') }}" class="button">Nouvelles localisation</a>
             </div>
@@ -25,7 +25,7 @@
                         <th>Ville</th>
                         <th>Adresse</th>
                         <th>Services associés</th>
-                        {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
+                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
                         <th>actions</th>
                         {% endif %}
                     </tr>
@@ -47,7 +47,7 @@
                             {{ '-' }}
                             {% endif %}
                         </td>
-                        {% if is_granted('ROLE_USER') or is_granted('ROLE_SUPER_ADMIN') %}
+                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
                         <td>
                             <ul class="icons">
                                 <li>

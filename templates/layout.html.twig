@@ -3,21 +3,26 @@
 {% block header %}
 <!-- Header -->
 <header id="header">
+    {# {% if is_granted('ROLE_USER') %}
+        <p>Connecté : {{ app.user.userIdentifier }}</p>
+    {% endif %} #}
     <div class="inner">
-        <a href="{{asset('home')}}" class="image avatar"><img src="{{ asset('images/LOGO-MLO.jpg') }}" alt="Logo MLO" /></a>
         <ul class="header-button">
+            <li>
+                <a href="{{asset('home')}}" class="image avatar"><img src="{{ asset('images/LOGO-MLO.jpg') }}" alt="Logo MLO" /></a>
+            </li>
             <li class="header-button-li"><a href="{{ path('app_information') }}" class="button"><h1>Accueil</h1></a></li>
-             {% if is_granted('ROLE_USER') %}
-             {% if is_granted('ROLE_SUPER_ADMIN') %}
-            <li class="header-button-li"><a href="{{ path('app_user_index') }}" class="button"><h1>Gestion Admin</h1></a></li>
-             {% endif %}
-            <li class="header-button-li"><a href="{{ path('app_logout', { redirect: app.request.uri }) }}" class="button"><h1>Déconnexion</h1> </a></li>
+            {% if is_granted('ROLE_USER') %}
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <li class="header-button-li"><a href="{{ path('app_user_index') }}" class="button"><h1>Gestion Admin</h1></a></li>
+            {% endif %}
+                <li class="header-button-li"><a href="{{ path('app_logout', { redirect: app.request.uri }) }}" class="button"><h1>Déconnexion</h1> </a></li>
             {% else %}
-            <li class="header-button-li"><a href="{{ path('app_login') }}" class="button" onclick="openLoginModal()"><h1>Administrateur</h1></a></li>
+                <li class="header-button-li"><a href="{{ path('app_login') }}" class="button" onclick="openLoginModal()"><h1>Administrateur</h1></a></li>
             {% endif %}
         </ul>
     </div>
-</header>
+</header>s
 
 {% if not is_granted('ROLE_ADMIN') %}
 <!-- Modal Admin Login -->
